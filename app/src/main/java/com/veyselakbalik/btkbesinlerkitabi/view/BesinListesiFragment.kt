@@ -32,8 +32,19 @@ class BesinListesiFragment : Fragment() {
         viewModel = ViewModelProviders.of(this)[BesinListesiViewModel::class.java]
         viewModel.refreshData()
 
+
         besinListRecycler.layoutManager = LinearLayoutManager(context)
         besinListRecycler.adapter = recyclerBesinAdapter
+
+        swipeRefreshLayout.setOnRefreshListener {
+            besinYukleniyor.visibility = View.VISIBLE
+            besinHataMesaji.visibility = View.GONE
+            besinListRecycler.visibility = View.GONE
+
+
+            viewModel.refreshData()
+            swipeRefreshLayout.isRefreshing = false
+        }
 
         observeLiveData()
     }

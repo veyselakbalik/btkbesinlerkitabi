@@ -7,6 +7,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.veyselakbalik.btkbesinlerkitabi.R
 import com.veyselakbalik.btkbesinlerkitabi.model.Besin
+import com.veyselakbalik.btkbesinlerkitabi.util.gorselIndir
+import com.veyselakbalik.btkbesinlerkitabi.util.placeHolderYap
 import com.veyselakbalik.btkbesinlerkitabi.view.BesinListesiFragmentDirections
 import kotlinx.android.synthetic.main.besin_recycler_row.view.*
 
@@ -24,7 +26,7 @@ class BesinRecyclerAdapter(val besinListesi : ArrayList<Besin>) : RecyclerView.A
     override fun onBindViewHolder(holder: BesinViewHolder, position: Int) {
         holder.itemView.isim.text = besinListesi.get(position).besinIsim
         holder.itemView.kalori.text = besinListesi.get(position).besinKalori
-        //Gorsel Eklenecek
+        holder.itemView.imageView.gorselIndir(besinListesi.get(position).besinGorsel, placeHolderYap(holder.itemView.context))
 
         holder.itemView.setOnClickListener {
             val action = BesinListesiFragmentDirections.actionBesinListesiFragmentToBesinDetayiFragment(0)
