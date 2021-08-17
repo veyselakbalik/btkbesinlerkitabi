@@ -41,8 +41,7 @@ class BesinListesiFragment : Fragment() {
             besinHataMesaji.visibility = View.GONE
             besinListRecycler.visibility = View.GONE
 
-
-            viewModel.refreshData()
+            viewModel.refreshFromInternet()
             swipeRefreshLayout.isRefreshing = false
         }
 
